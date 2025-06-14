@@ -2,12 +2,12 @@ import random
 import time
 import copy
 
-N = 10
+# N = 10 # Global N removed
 
 class Mai:
-    def __init__(self):
-        self.N = N
-        self.mat = [[2 for _ in range(N)] for _ in range(N)] # Default init to 2 for route/complete
+    def __init__(self, N_val=10):
+        self.N = N_val
+        self.mat = [[2 for _ in range(self.N)] for _ in range(self.N)] # Use self.N
         self.stack = []
         self.tos = 0
         self.f_flag_find = 0
@@ -49,7 +49,7 @@ class Mai:
         footer = (
             "\n\t!!!++++++++++++++++++++++++++++!!!\n"
             "\t!======Powered by Pejman.Gh======!\n"
-            "\t!=========www.Azardl.com=========!\n"
+            "\t!=========Haika.ir=========!\n"
             "\t!!!++++++++++++++++++++++++++++!!!"
         )
         print(footer)
@@ -224,7 +224,7 @@ class Mai:
             footer = (
                 "\n\t!!!++++++++++++++++++++++++++++!!!\n"
                 "\t!======Powered by Pejman.Gh======!\n"
-                "\t!=========www.Azardl.com=========!\n"
+                "\t!=========Haika.ir=========!\n"
                 "\t!!!++++++++++++++++++++++++++++!!!"
             )
             print(footer)
@@ -234,7 +234,26 @@ class Mai:
 
 
 if __name__ == "__main__":
-    game = Mai()
+    user_n = 10 # Default
+    while True:
+        try:
+            raw_input_val = input(f"Enter the maze size (N x N), e.g., 10 (current default: {user_n}, min 5, max 30): ")
+            if not raw_input_val: # User pressed Enter without typing anything
+                print(f"Using default size N={user_n}.")
+                break
+            temp_n = int(raw_input_val)
+            if 5 <= temp_n <= 30:
+                user_n = temp_n
+                break
+            else:
+                print("Size out of range. Please enter a value between 5 and 30.")
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
+        except EOFError: # Handle non-interactive environment
+            print(f"No input received. Using default size N={user_n}.")
+            break # user_n remains its default or last valid value
+
+    game = Mai(N_val=user_n)
     game._clear_screen()
     print("\t\tPLEASE WAIT COMPUTER IS MAKING PUZZLE\n")
 
@@ -328,5 +347,5 @@ if __name__ == "__main__":
     print('\a', end='', flush=True)
     print("\n\n\n\n\n\t\t\t\t THANK YOU")
     game._tim(300)
-    print("\n\n\t\t\t\a       www.Azardl.com ")
+    print("\n\n\t\t\t\a       Haika.ir ")
     game._tim(300)
