@@ -141,14 +141,14 @@ class Mai:
                     if self.f_flag_find == 1:
                         self._clear_screen()
                         self.mat[r][c] = 1
-                        self.print_maze(); self._tim(150)
+                        self.print_maze(); self._tim(100) # Adjusted
                         self.mat[r][c] = 7
-                        self.print_maze(); self._tim(150)
+                        self.print_maze(); self._tim(100) # Adjusted
                         self._clear_screen()
                         self.mat[r][c] = 1
-                        self.print_maze(); self._tim(150)
+                        self.print_maze(); self._tim(100) # Adjusted (from 150, assuming this was also part of blink)
                         self.mat[r][c] = 7
-                        self.print_maze(); self._tim(200)
+                        self.print_maze(); self._tim(120) # Adjusted
                         self.f_flag_find = 0
 
                     self.push(nr, nc)
@@ -156,12 +156,12 @@ class Mai:
 
                     self._clear_screen()
                     self.print_maze()
-                    print('\a', end='', flush=True)
-                    self._tim(250)
+                    # print('\a', end='', flush=True)
+                    self._tim(150) # Adjusted
 
                     if nr == self.N - 1:
-                        for _ in range(6):
-                            print('\a', end='', flush=True); self._tim(50)
+                        # for _ in range(6):
+                            # print('\a', end='', flush=True); self._tim(50)
                         print("\n      Route Found!")
                         self.inti(1) # Fills with 1s
                         self.path_found_globally = True
@@ -180,7 +180,7 @@ class Mai:
              self.pop()
 
         self.print_maze()
-        print('\a', end='', flush=True)
+        # print('\a', end='', flush=True)
         self._tim(100)
         self.f_flag_find = 1
         return False
@@ -228,9 +228,9 @@ class Mai:
                 "\t!!!++++++++++++++++++++++++++++!!!"
             )
             print(footer)
-            self._tim(80)
+            self._tim(50) # Adjusted
 
-        print('\a', end='', flush=True)
+        # print('\a', end='', flush=True)
 
 
 if __name__ == "__main__":
@@ -271,7 +271,7 @@ if __name__ == "__main__":
     game.print_maze()
     game._tim(40)
 
-    print('\a', end='', flush=True)
+    # print('\a', end='', flush=True)
     print("\n\t\t PUZZLE MAKE Correctly")
     print("\t  Press Any Key to See How Locate")
     print("\n ( ( ) is Guid & 0 is Open route & 1 is Close route)")
@@ -315,12 +315,12 @@ if __name__ == "__main__":
             # fill_route_on_matrix will change the '2's on the stack to 0 or 7.
             game.fill_route_on_matrix(path_val_blink)
             game.print_maze() # Will show blinking path (0 or spaces) on background of 1s
-            print('\a', end='', flush=True)
-            game._tim(80)
+            # print('\a', end='', flush=True)
+            game._tim(50) # Adjusted
 
-        for _ in range(4): print('\a', end='', flush=True); game._tim(50)
-        print('\a', end='', flush=True); game._tim(500)
-        for _ in range(4): print('\a', end='', flush=True); game._tim(50)
+        # for _ in range(4): print('\a', end='', flush=True); game._tim(50)
+        # print('\a', end='', flush=True); game._tim(500)
+        # for _ in range(4): print('\a', end='', flush=True); game._tim(50)
 
         game._clear_screen()
         # game.mat has path as 0 or 7 from last blink. Non-path is 1.
@@ -333,7 +333,7 @@ if __name__ == "__main__":
     print("\nOriginal maze (snapshot before find):")
     game_snapshot_display.print_maze()
 
-    print('\a', end='', flush=True)
+    # print('\a', end='', flush=True)
     game._tim(50)
     print("\n\t\t\t  OK")
     print("\t\tPress Any Key to Exit")
@@ -344,8 +344,8 @@ if __name__ == "__main__":
     game._clear_screen()
 
     game._tim(30)
-    print('\a', end='', flush=True)
+    # print('\a', end='', flush=True)
     print("\n\n\n\n\n\t\t\t\t THANK YOU")
     game._tim(300)
-    print("\n\n\t\t\t\a       Haika.ir ")
+    print("\n\n\t\t\t       Haika.ir ") # Removed \a from string
     game._tim(300)
