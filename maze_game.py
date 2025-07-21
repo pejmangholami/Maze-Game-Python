@@ -1,6 +1,7 @@
 import random
 import time
 import copy
+import os
 
 # N = 10 # Global N removed
 
@@ -29,7 +30,7 @@ class Mai:
                 self.mat[i][j] = p
 
     def _clear_screen(self):
-        print("\n" * 50)
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def _tim(self, duration_ms):
         time.sleep(duration_ms / 1000.0)
